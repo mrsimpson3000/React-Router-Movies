@@ -4,13 +4,15 @@ import { useParams } from "react-router-dom";
 
 const Movie = props => {
   const [movie, setMovie] = useState();
-
   const params = useParams();
   console.log(params);
-  console.log(props);
+  // const params = useParams();
+  // console.log(params);
+  // console.log("These are the props: ", props);
+  // console.log("This is the movie: ", movie);
 
-  useEffect(params => {
-    const id = 0;
+  useEffect(() => {
+    const id = params.movieID;
     // change ^^^ that line and grab the id from the URL
     // You will NEED to add a dependency array to this effect hook
 
@@ -18,11 +20,12 @@ const Movie = props => {
       .get(`http://localhost:5000/api/movies/${id}`)
       .then(response => {
         setMovie(response.data);
+        // console.log("Here is the data: ", response.data);
       })
       .catch(error => {
         console.error(error);
       });
-  }, []);
+  }, [params.movieID]);
 
   // Uncomment this only when you have moved on to the stretch goals
   // const saveMovie = () => {

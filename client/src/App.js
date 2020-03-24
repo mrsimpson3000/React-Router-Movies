@@ -17,7 +17,7 @@ const App = () => {
       <SavedList list={savedList} />
       {/* <div>Replace this Div with your Routes</div> */}
       <Switch>
-        <Route path='/movies/:itemID' component={Movie} />
+        <Route path='/movies/:movieID' component={Movie} />
         <Route path='/' component={MovieList} />
       </Switch>
     </div>
